@@ -12,6 +12,7 @@ using System.IO;
 using System.Configuration;
 using Newtonsoft.Json;
 using Film_Management_System_API.DataModels;
+using Film_Management_System_API.Controller;
 
 namespace Film_Management_System_MVC.Controllers
 {
@@ -33,7 +34,7 @@ namespace Film_Management_System_MVC.Controllers
             var moviesContext = _context.Films.Include(f => f.Actor).Include(f => f.Category).Include(f => f.Language).Include(f => f.OriginalLanguage);
             return View(await moviesContext.ToListAsync());
         }
-        [HttpGet]
+        /*[HttpGet]
         public async Task<IActionResult> Search(string name)
         {
             if ( name == null || _context.Films == null)
@@ -53,7 +54,7 @@ namespace Film_Management_System_MVC.Controllers
             }
 
             return View(film);
-        }
+        }*/
 
         // GET: Films/Details/5
         public async Task<IActionResult> Details(decimal? id)
@@ -78,57 +79,52 @@ namespace Film_Management_System_MVC.Controllers
              return View(film);
         }
 
-/*        public IActionResult SearchByName()
-        
+            public IActionResult SearchByName()
+
+                {
+                   
+                    return View();
+                }
+
+       
+        [HttpPost]
+        public async Task<IActionResult> SearchByName(IFormCollection collection)
         {
-            Film f = new Film();
-            return View();
-        }*/
+          
+            string Name = collection["Title"];
 
-     /*   [HttpPost, ActionName("SearchByName")]
-               [ValidateAntiForgeryToken]
-               public async Task<IActionResult> SearchByName(IFormCollection collection)
-
-               {
-                   string name = collection["Title"];
-                   var model = await this.SendDataToApi<string, Film>(
-                      baseUri: configuration.GetConnectionString("FilmsUri"),
-                      requestUrl: "api/Films/SearchByName/",name
-                      );
-                   var credstring = JsonConvert.SerializeObject(model);
-                   TempData["cred"] = credstring;
-                   return RedirectToAction("ViewMovie", "Films");
-
-               }*/
-       /* [HttpPost]
-        public ActionResult SearchByName(string name)
-        {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:5076/api/Films/Name");
-
-                //HTTP POST
-                var postTask = client.PostAsJsonAsync<Film>("student", Film);
-                postTask.Wait();
-
-                var result = postTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("Index");
+                var query = from d in _context.Films
+                            where Convert.ToString(d.Title) == Name
+                            select new Film()
+                            {
+                                Title = d.Title,
+                                ReleaseYear = d.ReleaseYear,
+                                Rating = d.Rating,
+                            };
+                List<Film> k = query.ToList();
+               
+                TempData["FilmsController"] = k;
+                        return RedirectToAction("ViewMovie", "Films");
+                    
                 }
+
+                return View();
+                               
             }
 
-            ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+            
+
+            public IActionResult ViewMovie()
+        {
+           /* var credstring = TempData["FilmsController"].ToString();
+            var cred = JsonConvert.DeserializeObject<List<IEnumerable<Film>>>(credstring);*/
+
 
             return View();
-        }*/
-        public IActionResult ViewMovie()
-        {
-            var credstring = TempData["cred"].ToString();
-            var cred = JsonConvert.DeserializeObject<IEnumerable<Film>>(credstring);
-
-            return View(model: cred);
         }
+
 
         // GET: Films/Create
         public IActionResult Create()

@@ -10,7 +10,15 @@
     <h4>Film</h4>
     <hr />
     <dl class="row">
-        
+   
+
+@*@foreach(var g in Model)
+    {<p>@Html.DisplayNameFor(g => g.Title)</p>
+
+    <p>@Html.DisplayNameFor(g => g.ReleaseYear)</p>
+
+    <p>@Html.DisplayNameFor(g=> g.Rating)</p>}
+</body>*@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
