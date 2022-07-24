@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Film Features";
+ 
+    
+
+}
+<body>
+    <section style="padding-top: 140px;" id="feature" class="about">
+      <div  class="container">
+
+        <div class="row justify-content-end">
+        
+
+          <div class="col-lg-6 video-box align-self-baseline position-relative">
+            <img style="  border-radius: 12px;  width:500px; height: 300px !important;"src="assets/img/Films.jpg" class="img-fluid" alt="">
+            
+          </div>
+
+          <div class="col-lg-6 pt-3 pt-lg-0 content">
+            <h3 style="color:#ff7f50">View All Films</h3>
+            <p class="fst-italic">
+             To view all films
+            </p>
+               <h5 style="color:#ff7f50"><strong>Click here to View List of Movies</strong></h5>       
+                    <a asp-area="Views" asp-controller="Adm" asp-action="Index1"><input type="Submit" value="ViewMovies" class = "btn1"></a>
+                   
+            <p>
+             
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+      </section>
+     
+
+      
+      <section id="feature" class="about">
+     <div style="border-color:#ff7f50; border-width:10px;" class="container">
+
+        <div class="row justify-content-end">
+        
+
+          <div class="col-lg-6 video-box align-self-baseline position-relative">
+            <img style="  border-radius: 12px;  width:485px; height: 300px !important;"src="assets/img/searchbyname.jpg" class="img-fluid" alt="">
+            
+          </div>
+
+          <div class="col-lg-6 pt-3 pt-lg-0 content">
+            <h3 style="color:#ff7f50">Search By Title</h3>
+            <p class="fst-italic">
+            To Find a Movie By Title
+            </p>
+               <h5 style="color:#ff7f50"><strong>Click here to Find a Movie By Title</strong></h5>       
+                    <a asp-area="Views" asp-controller="Films" asp-action="SearchByName"><input type="Submit" value="SearchByTitle" class = "btn1"></a>
+            <p>
+             
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+      </section>
+       <section id="feature" class="about">
+     <div style="border-color:#ff7f50; border-width:10px;" class="container">
+
+        <div class="row justify-content-end">
+        
+
+          <div class="col-lg-6 video-box align-self-baseline position-relative">
+            <img style="  border-radius: 12px;  height: 300px !important;"src="assets/img/filmscollage.jpg" class="img-fluid" alt="">
+            
+          </div>
+
+          <div class="col-lg-6 pt-3 pt-lg-0 content">
+            <h3 style="color:#ff7f50">Search By Actor</h3>
+            <p class="fst-italic">
+             To Find a Movie By Actor
+            </p>
+               <h5 style="color:#ff7f50"><strong>Click here to Find a Movie By Actor</strong></h5>       
+                    <a asp-area="Views" asp-controller="Films" asp-action="SearchByActor"><input type="Submit" value="Details" class = "btn1"> </a>
+            <p>
+             
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+      </section>
+      <section style="padding-bottom: 140px";id="feature" class="about">
+        <div style="border-color:#ff7f50;" class="container">
+
+        <div class="row justify-content-end">
+        
+
+          <div class="col-lg-6 video-box align-self-baseline position-relative">
+            <center><img style="  border-radius: 12px; height: 300px !important; "src="assets/img/language.jpg" class="img-fluid" alt=""></center>
+            
+          </div>
+
+          <div class="col-lg-6 pt-3 pt-lg-0 content">
+            <h3 style="color:#ff7f50">Search By Language</h3>
+            <p class="fst-italic">
+              To find a Movie by Language
+            </p>
+               <h5 style="color:#ff7f50"><strong>Click here to find a movie by Language</strong></h5>       
+                     <a asp-area="Views" asp-controller="Films" asp-action="Delete"><input type="Submit" value="Edit Profile" class = "btn1"> </a>
+            <p>
+             
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+      </section>
+    </body>
